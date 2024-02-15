@@ -3,14 +3,13 @@ import { SequelizeModule } from '@nestjs/sequelize'
 import { UsersModule } from './users/users.module'
 import { ConfigModule } from '@nestjs/config'
 import { User } from './users/users.model'
-import { RolesService } from './roles/roles.service'
 import { RolesModule } from './roles/roles.module'
 import { Role } from './roles/roles.model'
 import { UserRoles } from './roles/user-roles.model'
 
 @Module({
     controllers: [],
-    providers: [RolesService],
+    providers: [],
     imports: [
         ConfigModule.forRoot({
             envFilePath: `.${process.env.NODE_ENV}.env`,
