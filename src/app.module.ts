@@ -1,18 +1,22 @@
 import { Module } from '@nestjs/common'
 import { SequelizeModule } from '@nestjs/sequelize'
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './users/users.module'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
     controllers: [],
     providers: [],
     imports: [
+        ConfigModule.forRoot({
+            envFilePath: `.${process.env.NODE_ENV}.env`,
+        }),
         SequelizeModule.forRoot({
             dialect: 'postgres',
-            host: 'localhost',
-            port: 5432,
-            username: 'postgres',
-            password: 'root',
-            database: 'users-game',
+            host: process.env.POSTGRES_HOST,
+            port: Number(process.env.POSTGRES_PORT),
+            username: String(process.env.POSTGRES_USER),
+            password: String(process.env.POSTGRES_PASSWORD),
+            database: String(process.env.POSTGRES_DB),
             models: [],
             autoLoadModels: true,
         }),
