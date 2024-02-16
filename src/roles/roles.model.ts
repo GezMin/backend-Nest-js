@@ -11,7 +11,7 @@ import { UserRoles } from './user-roles.model'
 
 interface RoleCreationAttrs {
     value: string
-    descripton: string
+    description: string
 }
 
 @Table({ tableName: 'roles' })
@@ -29,7 +29,7 @@ export class Role extends Model<Role, RoleCreationAttrs> {
     @Column({ type: DataType.STRING, unique: true, allowNull: false })
     value: string
 
-    @ApiProperty({ example: 'Admin', description: 'Descripton Role' })
+    @ApiProperty({ example: 'Admin', description: 'Description Role' })
     @Column({ type: DataType.STRING, allowNull: false })
     description: string
 
